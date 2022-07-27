@@ -23,14 +23,14 @@
 
 \newcommand\vrot{\ensuremath{v_{\textrm{rot}}}}
 
-\title{Mass Distribution of Spiral Galaxies}
+\title{Mass Distributions of Spiral Galaxies}
 \date{}
 
 \begin{document}
 
 \maketitle
 
-\section{Introduction}
+\section{Introduction}\label{sec:introduction}
 
 The astronomer Edwin Hubble, in a series of lectures given at Yale in 1935\footnote{These lectures were later published under the title \textit{The Realm of the Nebulae} \cite{Hubble1936}.}, provided a classification of galaxies, which he refered to as \textit{extragalactic nebulae}, into spiral and elliptic.
 This classification is used even today by amateur and professional astronomers alike, though the expanded version provided by French astronomer Gérard de Vaucouleurs is preferable.
@@ -61,7 +61,7 @@ Since the velocity of a body in circular motion can be related to its mass using
 %     \item RQ: How is the gravitational mass of a spiral galaxy distributed within its disc, and how is this distribution determined by the rotational velocity distribution within and outside the disc?
 % \end{itemize}
 
-\section{Theory}
+\section{Theory}\label{sec:theory}
 
 Consider a spherical gas cloud of radius \(R\) and uniform density \(\rho\) that is rotating about its centre.
 The rotational speed \(v_{\text{rot}}\) of a particle of mass \(m\) at distance \(r\) from the centre can be found using Newton's law of gravitation and second law of motion, which give us
@@ -121,7 +121,23 @@ However, as we shall see, the actual rotation curve of a spiral galaxy as well a
 %     \item Don't say "galactocentric speed/velocity", rather "rotational speed/velocity".
 % \end{itemize}
 
-\section{Method}
+\section{Method}\label{sec:method}
+
+This paper attempts to answer the proposed research question by analysing rotation curve data on the following galaxies: NGC0024, NGC0289, NGC1003, NGC2366, NGC2403.
+The paper relies on two main sources for relevant data.
+The observed velocities at various distances from the centres of these galaxies and the inclinations of the galaxies are taken from \Cite{SPARC}, which is a database of 175 spiral and irregular galaxies (including the ones mentioned above) using photometric and spectroscopic measurements from the Spitzer Space Telescope.
+The chosen galaxies are all of them intentionally spiral galaxies, as the theory developed in \Cref{sec:theory} would not remain accurate for irregulars.
+In addition to this database, the paper also makes use of the NASA/IPAC Extragalactic Database to ascertain the diameter of the visible disc of each of the chosen galaxies.
+
+The paper proceeds as follows.
+\Cref{sec:raw-data} tabulates all of the raw data required from the aforementioned databases; this includes the radii and inclinations of the galaxies, as well as a table for each galaxy tabulating observed velocities at different distances from the centre.
+\Cref{sec:processed-data} uses this information to compute and plot the rotation curves and cumulative mass distributions of all of the galaxies.
+These graphs are analysed in \Cref{sec:analysis}, and conclusions are presented in \Cref{sec:conclusion}.
+Finally, \Cref{sec:evaluation} provides a brief evaluation of possible errors or inaccuracies.
+
+\section{Raw Data}\label{sec:raw-data}
+
+\section{Processed Data}\label{sec:processed-data}
 
 % ---- move to METHOD
 
@@ -135,17 +151,9 @@ However, as we shall see, the actual rotation curve of a spiral galaxy as well a
 
 % ----
 
-\begin{itemize}
-    \item Move uncertainty bit from Analysis (Draft) to here.
-\end{itemize}
+\section{Analysis}\label{sec:analysis}
 
-\section{Analysis}
-
-\begin{itemize}
-    \item Present processed data as succintly as possible.
-\end{itemize}
-
-\section{Conclusion}
+\section{Conclusion}\label{sec:conclusion}
 
 \begin{itemize}
     \item Analysis provides basis for dark matter.
@@ -153,24 +161,24 @@ However, as we shall see, the actual rotation curve of a spiral galaxy as well a
     \item Mention alternatives to dark matter (MOND).
 \end{itemize}
 
-\section{Evaluation}
+\section{Evaluation}\label{sec:evaluation}
 
 \begin{itemize}
     \item Where does uncertainty come from?
     \item How does this uncertainty affect the conclusion?
 \end{itemize}
 
-\appendix
-
-\section{Appendix}
-
-\subsection{Raw Data}
-
-\begin{itemize}
-    \item Tabulate.
-\end{itemize}
-
-\subsection{Figures}
+% \appendix
+% 
+% \section{Appendix}
+% 
+% \subsection{Raw Data}
+% 
+% \begin{itemize}
+%     \item Tabulate.
+% \end{itemize}
+% 
+% \subsection{Figures}
 
 \nocite{*}
 \printbibliography

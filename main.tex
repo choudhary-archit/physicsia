@@ -132,8 +132,9 @@ The observed velocities at various distances from the centres of these galaxies 
 The chosen galaxies are all of them intentionally spiral galaxies, as the theory developed in \Cref{sec:theory} would not remain accurate for irregulars.
 In addition to this database, the paper also makes use of the NASA/IPAC Extragalactic Database to ascertain the diameter of the visible disc of each of the chosen galaxies.
 
-The paper proceeds as follows.
-\Cref{sec:raw-data} tabulates all of the raw data required from the aforementioned databases; this includes the radii and inclinations of the galaxies, as well as a table for each galaxy tabulating observed velocities at different distances from the centre.
+The paper is structured as follows.
+The raw data required from the aforementioned databases is tabulated in \Cref{sec:raw-data}; this includes the radii and inclinations of the galaxies, as well as a table for each galaxy tabulating observed velocities at different distances from the centre.
+Due to space requirements, this has been pushed to the appendix.
 \Cref{sec:processed-data} uses this information to compute and plot the rotation curves and cumulative mass distributions of all of the galaxies.
 These graphs are analysed in \Cref{sec:analysis}, and conclusions are presented in \Cref{sec:conclusion}.
 Finally, \Cref{sec:evaluation} provides a brief evaluation of the uncertainties involved.
@@ -152,8 +153,28 @@ Finally, \Cref{sec:evaluation} provides a brief evaluation of the uncertainties 
 
 % ----
 
-\singlespacing
+\Cref{tab:raw0024-0289,tab:raw1003-2366,tab:raw2403} (in \Cref{sec:raw-data}) tabulate the observed velocities for each galaxy at various distances from their centres.
+\textbf{HOWEVER...}
+To correct for this error and to find \(\vrot\), we can use the following equation:
+\begin{equation}\label{eq:vrotfromvobs}
+    \vrot = \frac{\vobs}{\sin\theta}.
+\end{equation}
+Here \(\theta\) is the \textit{inclination} of the galaxy in question.
+\textbf{THIS IS BECAUSE...}
 
+Now we can rearrange \Cref{eq:vrotcummass} to get the internal mass \(M\) of the galaxy up to any radial distance \(r\):
+\begin{equation}\label{eq:internalmass}
+    M = \frac{r\vrot^2}{G}.
+\end{equation}
+This is the total mass of all matter in the galaxy up to a radius \(r\), as \(\vrot\) represents the orbital velocity at a distance \(r\) from the center.
+
+\Cref{eq:vrotfromvobs,eq:internalmass} are used to generate \Cref{tab:proc0024-0289,tab:proc1003-2366,tab:proc2403}.
+Since we are using astronomical units, the value of \(G\) taken in \Cref{eq:internalmass} is \(G = 4.3009 \times 10^{-6} \, \kpc \cdot (\kmps)^2 \cdot \solmass^{-1}\).
+The uncertainties used are explained in \Cref{sec:evaluation}.
+\Cref{fig:ngc0024,fig:ngc0289,fig:ngc1003,fig:ngc2366,fig:ngc2403} are subsequently rendered using these tables in Microsoft Excel 2011, the error bars representing the uncertainties in the corresponding variable.
+Note that due to the small uncertainty in \(r\) as compared to \(\vrot\) and \(M\), the error bars for \(r\) are not visible.
+
+\singlespacing
 \begin{table}[h!]
     \begin{tabular}{|c|c|c|}
         \hline
@@ -230,9 +251,11 @@ Finally, \Cref{sec:evaluation} provides a brief evaluation of the uncertainties 
         \hline
     \end{tabular}
     \caption{$\vrot$ and $M$ data for NGC0024 and NGC0289.}
-    \label{tab:proc0024,0289}
+    \label{tab:proc0024-0289}
 \end{table}
+\doublespacing
 
+\singlespacing
 \begin{table}[h!]
     \begin{tabular}{|c|c|c|}
         \hline
@@ -314,9 +337,11 @@ Finally, \Cref{sec:evaluation} provides a brief evaluation of the uncertainties 
         \hline
     \end{tabular}
     \caption{$\vrot$ and $M$ data for NGC1003 and NGC2366.}
-    \label{tab:proc1003,2366}
+    \label{tab:proc1003-2366}
 \end{table}
+\doublespacing
 
+\singlespacing
 \begin{table}[h!]
     \begin{tabular}{|c|c|c|}
         \hline
@@ -409,7 +434,6 @@ Finally, \Cref{sec:evaluation} provides a brief evaluation of the uncertainties 
     \caption{$\vrot$ and $M$ data for NGC2403.}
     \label{tab:proc2403}
 \end{table}
-
 \doublespacing
 
 \begin{figure}
@@ -489,7 +513,34 @@ Finally, \Cref{sec:evaluation} provides a brief evaluation of the uncertainties 
 
 \section{Analysis}\label{sec:analysis}
 
+There is an immediate discrepancy between \Cref{fig:expectedgraphs} and \Cref{fig:ngc0024,fig:ngc0289,fig:ngc1003,fig:ngc2366,fig:ngc2403}: for none of the chosen galaxies does the rotation curve fall off according to \Cref{eq:vrotdense} at the boundary of the visible disc.
+The radius of NGC2366 is \(8.35/2 = 4.175\,\kpc\) according to \Cref{tab:diameters-inclinations}, for example, and we find in \Cref{tab:proc1003-2366} that after \(r = 4.16\,\kpc\), the corresponding values of \(\vrot\) remaining roughly constant around \(\vrot = 54\,\kmps\); according to \Cref{eq:vrotdense} and \Cref{fig:expectedgraphs}, however, the graph should have decreased according to \(r^{-1/2}\) after this point.
+This can be observed in the case of NGC2403 also, on which we have the greatest number of data points.
+The radius of NGC2403 is \(27.69/2 = 13.855\,\kpc\) and we see in \Cref{fig:ngc2403} that \(\vrot\) stays very close to \(150\,\kmps\) for nearly \(10\,\kpc\) after this point.
+The reason for the rotation curve decreasing after the boundary of the visible disc is that after the visible disc, there is, by definition, no matter that can emit light; otherwise we would have detected it and the radius of the visible disc would have been larger.
+This discrepancy in the expected rotation curve and the actual ones suggests that there is still matter outside the visible disc, necessarily unable to emit light, that contributes to an orbital velocity around the galaxy.
+
+The discrepancy in the expected and actual cumulative mass distribution supports this theory.
+According to \Cref{fig:expectedgraphs}, the cumulative mass of the galaxy is supposed to stay constant after the end of visible disc, on our assumption that there is no matter outside the visible disc; all the stars of a galaxy, which are the primary contributors to the mass of a galaxy, are located in the visible disc since they emit light.
+However, as we see in \Cref{fig:ngc2403}, the cumulative mass of NGC2403 continues to increase even after the end of the visible disc at \(r = 13.855\,\kpc\), that too at seemingly the same rate.
+A similar pattern is observed in the other galaxies even after the lack of a large amount of data.
+The radius of NGC1003 is \(19.32/2 = 9.66\,\kpc\), for instance, and \Cref{fig:ngc1003} shows a roughly linear continuation of the expected graph after the end of the visible disc for over \(20\,\kpc\).
+
+There are also drops in the cumulative mass at certain points, which should not happen; by definition, cumulative mass always increases and thus drops should never occur.
+For example, considering NGC0289, the value of \(M\) decreases from \(7.49\times 10^{11}\,\solmass\) to \(6.95\times 10^{11}\,\solmass\) as \(r\) increases from \(59.03\,\kpc\) to \(62.00\,\kpc\); this drop is quite visible in \Cref{fig:ngc0289}.
+Note that the radius of NGC0289 is quite large (\(70.47/2 = 35.235\,\kpc\)) but \(62.00\,\kpc\) is still far beyond the visible disc.
+A smaller drop occurs in the case of NGC2366, where \(M\) falls from \(3.51\times 10^9\,\solmass\) to \(3.40\times 10^9\,\solmass\) as \(r\) increases from \(5.11\,\kpc\) to \(5.35\,\kpc\).
+In both of these cases, the drop occurs outside of the visible disc.
+The values of \(M\) depend on \Cref{eq:internalmass}, and a decrease in \(M\) results from a sufficiently large decrease in \(\vrot\); this is because \(M_i > M_{i+1}\), which means \(r_iv_i^2 > r_{i+1}v_{i+1}^2\), implies
+\begin{equation}
+    v_{i+1} < \sqrt{\frac{r_i}{r_{i+1}}}v_i.
+\end{equation}
+Thus two possible explanations arise for this error: either some of the measurements were off --- the observed velocities at these ``drop points'' have been measured to be lower than they actually are, or the inclination measured is higher than the actual inclination --- or \Cref{eq:internalmass} itself is inaccurate, perhaps underlining a limitation of the application of Newton's laws at an astronomical scale.
+In any case, since these drops are far and few, and since the rotation curve can generally be described as constant and the cumulative mass distribution linearly increasing after the end of the visible disc, the existence of these drops does not invalidate our conclusions discussed in the next section.
+
 \section{Conclusion}\label{sec:conclusion}
+
+Our analysis supports the existence of matter that does not interact with light but still has mass, in that it imparts gravitational influence like normal luminous matter.
 
 \begin{itemize}
     \item Analysis provides basis for dark matter.
@@ -500,6 +551,13 @@ Finally, \Cref{sec:evaluation} provides a brief evaluation of the uncertainties 
 \section{Evaluation}\label{sec:evaluation}
 
 \begin{itemize}
+    \item Why constant uncertainty in \(r\)? (Data given to two decimal places.)
+    \item Uncertainty in \(\theta\).
+    \item Uncertainties in \(\vobs\) and \(\vrot\).
+    \item Uncertainty in \(M\) increases as \(r\) increases.
+\end{itemize}
+
+\begin{itemize}
     \item Where does uncertainty come from?
     \item How does this uncertainty affect the conclusion?
 \end{itemize}
@@ -508,9 +566,9 @@ Finally, \Cref{sec:evaluation} provides a brief evaluation of the uncertainties 
 
 \section{Appendix}
 
-\subsection{Raw Data}
+\subsection{Raw Data}\label{sec:raw-data}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mattis, nibh ut venenatis maximus, nibh ex finibus libero, sed fermentum lorem ex ut erat. Proin quis risus vel velit scelerisque laoreet. Maecenas ut eros mattis turpis tincidunt scelerisque quis ut augue. Sed viverra sem eu enim viverra facilisis. Etiam laoreet felis ac dolor malesuada tincidunt. Morbi id ante mauris. Sed laoreet aliquet ante. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce leo diam, varius posuere dignissim sit amet, volutpat eu est. Aliquam erat volutpat. Maecenas tincidunt leo elit, mollis dignissim turpis malesuada ut. Ut congue sollicitudin scelerisque. Maecenas sed lectus eu nibh accumsan auctor in dictum tellus.
+% Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mattis, nibh ut venenatis maximus, nibh ex finibus libero, sed fermentum lorem ex ut erat. Proin quis risus vel velit scelerisque laoreet. Maecenas ut eros mattis turpis tincidunt scelerisque quis ut augue. Sed viverra sem eu enim viverra facilisis. Etiam laoreet felis ac dolor malesuada tincidunt. Morbi id ante mauris. Sed laoreet aliquet ante. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce leo diam, varius posuere dignissim sit amet, volutpat eu est. Aliquam erat volutpat. Maecenas tincidunt leo elit, mollis dignissim turpis malesuada ut. Ut congue sollicitudin scelerisque. Maecenas sed lectus eu nibh accumsan auctor in dictum tellus.
 
 % \rowcolors{2}{gray!10}{gray!40} % For alternate row-coloring
 
@@ -533,7 +591,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mattis, nibh u
 \end{table}
 \doublespacing
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mattis, nibh ut venenatis maximus, nibh ex finibus libero, sed fermentum lorem ex ut erat. Proin quis risus vel velit scelerisque laoreet. Maecenas ut eros mattis turpis tincidunt scelerisque quis ut augue. Sed viverra sem eu enim viverra facilisis. Etiam laoreet felis ac dolor malesuada tincidunt. Morbi id ante mauris. Sed laoreet aliquet ante. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce leo diam, varius posuere dignissim sit amet, volutpat eu est. Aliquam erat volutpat. Maecenas tincidunt leo elit, mollis dignissim turpis malesuada ut. Ut congue sollicitudin scelerisque. Maecenas sed lectus eu nibh accumsan auctor in dictum tellus.
+% Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mattis, nibh ut venenatis maximus, nibh ex finibus libero, sed fermentum lorem ex ut erat. Proin quis risus vel velit scelerisque laoreet. Maecenas ut eros mattis turpis tincidunt scelerisque quis ut augue. Sed viverra sem eu enim viverra facilisis. Etiam laoreet felis ac dolor malesuada tincidunt. Morbi id ante mauris. Sed laoreet aliquet ante. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce leo diam, varius posuere dignissim sit amet, volutpat eu est. Aliquam erat volutpat. Maecenas tincidunt leo elit, mollis dignissim turpis malesuada ut. Ut congue sollicitudin scelerisque. Maecenas sed lectus eu nibh accumsan auctor in dictum tellus.
 
 \singlespacing
 
@@ -613,7 +671,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mattis, nibh u
         \hline
     \end{tabular}
     \caption{$\vobs$ data for NGC0024 and NGC0289 (SPARC).}
-    \label{tab:raw0024,0289}
+    \label{tab:raw0024-0289}
 \end{table}
 
 \begin{table}[h!]
@@ -697,7 +755,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mattis, nibh u
         \hline
     \end{tabular}
     \caption{$\vobs$ data for NGC1003 and NGC2366 (SPARC).}
-    \label{tab:raw1003,2366}
+    \label{tab:raw1003-2366}
 \end{table}
 
 \begin{table}[h!]

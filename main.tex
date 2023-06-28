@@ -11,9 +11,10 @@
 
 \usepackage{amsmath,amssymb,amsfonts,amsthm} % Math packages
 
+% \usepackage[style=alphabetic]{biblatex} % For bibliography
+% \addbibresource{bibliography.bib}
+\usepackage{pdfpages} % To include bibliography.pdf
 \usepackage{cleveref} % Inline referencing
-\usepackage[style=alphabetic]{biblatex} % For bibliography
-\addbibresource{bibliography.bib}
 
 \usepackage{setspace} % For double-spacing
 \doublespacing
@@ -35,14 +36,14 @@
 
 \section{Introduction}\label{sec:introduction}
 
-The astronomer Edwin Hubble, in a series of lectures given at Yale in 1935\footnote{These lectures were later published under the title \textit{The Realm of the Nebulae} \cite{Hubble1936}.}, provided a classification of galaxies, which he refered to as \textit{extragalactic nebulae}, into spiral and elliptic.
+The astronomer Edwin Hubble, in a series of lectures given at Yale in 1935\footnote{These lectures were later published under the title \textit{The Realm of the Nebulae} [1].}, provided a classification of galaxies, which he refered to as \textit{extragalactic nebulae}, into spiral and elliptic.
 This classification is used even today by amateur and professional astronomers alike, though the expanded version provided by French astronomer Gérard de Vaucouleurs is preferable.
 But nowadays, the morphological classification of galaxies --- classifying galaxies based on what we perceive their shape to be --- is done computationally.
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.7\linewidth]{hubblefork}
-    \caption{Hubble's "tuning fork" classification scheme, p. 45, \cite{Hubble1936}.}
+    \caption{Hubble's "tuning fork" classification scheme, p. 45, [1].}
     \label{fig:hubblefork}
 \end{figure}
 
@@ -55,14 +56,6 @@ Since the velocity of a body in circular motion can be related to its mass using
 \begin{center}
     \textit{How is the gravitational mass of a spiral galaxy distributed within its disc, and how is this distribution determined by the rotational velocities?}
 \end{center}
-
-% \begin{itemize}
-%     \item What are spiral galaxies?
-%     \item Edwin Hubble's work.
-%     \item What measurements have been made about spiral galaxies?
-%     \item Go relatively deep; show that you've done reading outside of IB.
-%     \item RQ: How is the gravitational mass of a spiral galaxy distributed within its disc, and how is this distribution determined by the rotational velocity distribution within and outside the disc?
-% \end{itemize}
 
 \section{Theory}\label{sec:theory}
 
@@ -103,12 +96,12 @@ Note that in this paper we use astronomical units of measurement to ease our cal
 \begin{figure}
     \centering
     \begin{subfigure}{0.4\textwidth}
-        \includegraphics[width=\textwidth]{hubblefork}
+        \includegraphics[width=\textwidth]{VROT}
         \caption{Rotation curve}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.4\textwidth}
-        \includegraphics[width=\textwidth]{hubblefork}
+        \includegraphics[width=\textwidth]{M}
         \caption{Cumulative mass distribution}
     \end{subfigure}
     \caption{Expected rotation curve and cumulative mass distribution for a galaxy.}
@@ -128,7 +121,7 @@ However, as we shall see, the actual rotation curve of a spiral galaxy as well a
 
 This paper attempts to answer the proposed research question by analysing rotation curve data on the following galaxies: NGC0024, NGC0289, NGC1003, NGC2366, NGC2403.
 The paper relies on two main sources for relevant data.
-The observed velocities at various distances from the centres of these galaxies and the inclinations of the galaxies are taken from \Cite{SPARC}, which is a database of 175 spiral and irregular galaxies (including the ones mentioned above) using photometric and spectroscopic measurements from the Spitzer Space Telescope.
+The observed velocities at various distances from the centres of these galaxies and the inclinations of the galaxies are taken from [2], which is a database of 175 spiral and irregular galaxies (including the ones mentioned above) using photometric and spectroscopic measurements from the Spitzer Space Telescope.
 The chosen galaxies are all of them intentionally spiral galaxies, as the theory developed in \Cref{sec:theory} would not remain accurate for irregulars.
 In addition to this database, the paper also makes use of the NASA/IPAC Extragalactic Database to ascertain the diameter of the visible disc of each of the chosen galaxies.
 
@@ -154,15 +147,13 @@ Finally, \Cref{sec:evaluation} provides a brief evaluation of the uncertainties 
 % ----
 
 \Cref{tab:raw0024-0289,tab:raw1003-2366,tab:raw2403} (in \Cref{sec:raw-data}) tabulate the observed velocities for each galaxy at various distances from their centres.
-\textbf{HOWEVER...}
 To correct for this error and to find \(\vrot\), we can use the following equation:
 \begin{equation}\label{eq:vrotfromvobs}
     \vrot = \frac{\vobs}{\sin\theta}.
 \end{equation}
-Here \(\theta\) is the \textit{inclination} of the galaxy in question.
-\textbf{THIS IS BECAUSE...}
+Here \(\theta\) is the \textit{inclination} of the galaxy in question; dividing by \(\sin\theta\) gives the rotational component of the observed velocity.
 
-Now we can rearrange \Cref{eq:vrotcummass} to get the internal mass \(M\) of the galaxy up to any radial distance \(r\):
+We can also rearrange \Cref{eq:vrotcummass} to get the internal mass \(M\) of the galaxy up to any radial distance \(r\):
 \begin{equation}\label{eq:internalmass}
     M = \frac{r\vrot^2}{G}.
 \end{equation}
@@ -544,7 +535,7 @@ To answer the initial research question, the cumulative mass distribution is lin
 Thus, our analysis supports the existence of matter that does not interact with the electromagnetic field but still has mass, in that it imparts gravitational influence like normal luminous matter.
 Multiple theories have been proposed for the explanation of this phenomenon.
 The most prominent of these is the proposal of the existence of a substance called \textit{dark matter}, which is defined exactly as above: nonluminous matter that still contributes to the gravitational field.
-Because of the non-interactivity of dark matter with light, dark matter is very hard to detect \Cite{CERN}, and subsequently there are different theories about the nature of dark matter.
+Because of the non-interactivity of dark matter with light, dark matter is very hard to detect [3], and subsequently there are different theories about the nature of dark matter.
 One theory says that dark matter consists of what are called \textit{Weakly Interacting Massive Particles}.
 These WIMPs constitute a new proposed elementary particle which interacts through any force that is at least as weak as the weak nuclear force, particularly gravity.
 Since WIMPs would be ``invisible'', one strategy used to try to detect them is looking for the theoretical products of reactions that involve them, such as gamma rays or neutrinos.
@@ -559,29 +550,25 @@ In any case, research is still being conducted on both dark matter and MOND and 
 
 \section{Evaluation}\label{sec:evaluation}
 
-\begin{itemize}
-    \item Why constant uncertainty in \(r\)? (Data given to two decimal places.)
-    \item Uncertainty in \(\theta\).
-    \item Uncertainties in \(\vobs\) and \(\vrot\).
-    \item Uncertainty in \(M\) increases as \(r\) increases.
-\end{itemize}
+Uncertainty is inevitable when dealing with astronomical data, since even the best of measuring instruments cannot guarantee full certainty.
+The SPARC database from which the \(\vobs\) data was taken provided the \(r\)-values up to two decimal places, but did not provide an uncertainty.
+Therefore I was obliged to take an uncertainty of \(\pm 0.01\), which is present in all of the table.
+The uncertainty in \(\vobs\) was provided, however, as was the uncertainty in \(\theta\), the latter being from the NASA/IPAC Extragalactic Database.
+These uncertainties originate from the limitations of the technology and methods of measurement used.
+The values are as presented in the corresponding tables.
+The uncertainties in the dependent variables, namely \(\vrot\) and \(M\), were computed according to
+\begin{equation}
+    \Delta \vrot = \frac 1 2 \left(\frac{\vobs + \Delta\vobs}{\sin(\theta - \Delta\theta)} - \frac{\vobs - \Delta\vobs}{\sin(\theta + \Delta\theta)} \right), \
+    \qquad \
+    \Delta M = \left(2\frac{\Delta\vrot}{\vrot} + \frac{\Delta r}{r}\right)M.
+\end{equation}
+These are derived from \Cref{eq:vrotfromvobs,eq:internalmass}, respectively.
 
-\begin{itemize}
-    \item Where does uncertainty come from?
-    \item How does this uncertainty affect the conclusion?
-\end{itemize}
+\includepdf[pages={1}]{bibliography.pdf}
 
 \appendix
+\section{Raw Data}\label{sec:raw-data}
 
-\section{Appendix}
-
-\subsection{Raw Data}\label{sec:raw-data}
-
-% Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mattis, nibh ut venenatis maximus, nibh ex finibus libero, sed fermentum lorem ex ut erat. Proin quis risus vel velit scelerisque laoreet. Maecenas ut eros mattis turpis tincidunt scelerisque quis ut augue. Sed viverra sem eu enim viverra facilisis. Etiam laoreet felis ac dolor malesuada tincidunt. Morbi id ante mauris. Sed laoreet aliquet ante. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce leo diam, varius posuere dignissim sit amet, volutpat eu est. Aliquam erat volutpat. Maecenas tincidunt leo elit, mollis dignissim turpis malesuada ut. Ut congue sollicitudin scelerisque. Maecenas sed lectus eu nibh accumsan auctor in dictum tellus.
-
-% \rowcolors{2}{gray!10}{gray!40} % For alternate row-coloring
-
-\singlespacing % Otherwise it gets all wonky
 \begin{table}[h!]
     \centering
     \begin{tabular}{|c|c|c|}
@@ -598,11 +585,6 @@ In any case, research is still being conducted on both dark matter and MOND and 
     \caption{Diameters (NASA) and inclinations (SPARC).}
     \label{tab:diameters-inclinations}
 \end{table}
-\doublespacing
-
-% Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mattis, nibh ut venenatis maximus, nibh ex finibus libero, sed fermentum lorem ex ut erat. Proin quis risus vel velit scelerisque laoreet. Maecenas ut eros mattis turpis tincidunt scelerisque quis ut augue. Sed viverra sem eu enim viverra facilisis. Etiam laoreet felis ac dolor malesuada tincidunt. Morbi id ante mauris. Sed laoreet aliquet ante. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce leo diam, varius posuere dignissim sit amet, volutpat eu est. Aliquam erat volutpat. Maecenas tincidunt leo elit, mollis dignissim turpis malesuada ut. Ut congue sollicitudin scelerisque. Maecenas sed lectus eu nibh accumsan auctor in dictum tellus.
-
-\singlespacing
 
 \begin{table}[h!]
     \begin{tabular}{|c|c|}
@@ -859,10 +841,5 @@ In any case, research is still being conducted on both dark matter and MOND and 
     \caption{$\vobs$ data for NGC2403 (SPARC).}
     \label{tab:raw2403}
 \end{table}
-
-\doublespacing
-
-\nocite{*}
-\printbibliography
 
 \end{document}
